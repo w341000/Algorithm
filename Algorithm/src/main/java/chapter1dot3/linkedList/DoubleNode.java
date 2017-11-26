@@ -1,7 +1,7 @@
 package chapter1dot3.linkedList;
 
 /**
- * ÊµÏÖÒ»¸öË«ÏòÁ´±í,Ã¿¸ö½Úµãº¬ÓĞÇ°Ò»¸ö¼°ºóÒ»¸ö½ÚµãµÄÒıÓÃ,²¢ÊµÏÖ¸÷ÖÖ·½·¨
+ * å®ç°ä¸€ä¸ªåŒå‘é“¾è¡¨,æ¯ä¸ªèŠ‚ç‚¹å«æœ‰å‰ä¸€ä¸ªåŠåä¸€ä¸ªèŠ‚ç‚¹çš„å¼•ç”¨,å¹¶å®ç°å„ç§æ–¹æ³•
  */
 public class DoubleNode {
 	Node head;
@@ -17,7 +17,7 @@ public class DoubleNode {
 	public  void insertHead(Object item) {
 		Node node=new Node(item);
 		Node oldHead=head;
-		if(head==null) {//Í·½ÚµãÎª¿ÕÔò±íÊ¾ÕâÊÇÒ»¸ö¿ÕÁ´±í
+		if(head==null) {//å¤´èŠ‚ç‚¹ä¸ºç©ºåˆ™è¡¨ç¤ºè¿™æ˜¯ä¸€ä¸ªç©ºé“¾è¡¨
 			head=node;
 			tail=node;
 			return;
@@ -28,7 +28,7 @@ public class DoubleNode {
 	}
 	public  Object deleteHead() {
 		Object item=head.item;
-		if(head.next==null) {//Í·Ã»ÓĞÏÂÒ»¸ö½Úµã,ËµÃ÷Í·ÊÇ×îºóÒ»¸ö½Úµã
+		if(head.next==null) {//å¤´æ²¡æœ‰ä¸‹ä¸€ä¸ªèŠ‚ç‚¹,è¯´æ˜å¤´æ˜¯æœ€åä¸€ä¸ªèŠ‚ç‚¹
 			tail=null;
 			head=null;
 			return item;
@@ -40,7 +40,7 @@ public class DoubleNode {
 	public void insertTail(Object item) {
 		Node node=new Node(item);
 		Node oldTail=tail;
-		if(tail==null) {//Î²½ÚµãÎª¿ÕÔò±íÊ¾ÕâÊÇÒ»¸ö¿ÕÁ´±í
+		if(tail==null) {//å°¾èŠ‚ç‚¹ä¸ºç©ºåˆ™è¡¨ç¤ºè¿™æ˜¯ä¸€ä¸ªç©ºé“¾è¡¨
 			head=node;
 			tail=node;
 			return;
@@ -52,7 +52,7 @@ public class DoubleNode {
 	
 	public Object deleteTail() {
 		Object item=tail.item;
-		if(tail.previous==null) {//Î²½ÚµãÃ»ÓĞÉÏÒ»¸ö½Úµã,ËµÃ÷Î²½ÚµãÊÇÎ¨Ò»Ò»¸ö½Úµã
+		if(tail.previous==null) {//å°¾èŠ‚ç‚¹æ²¡æœ‰ä¸Šä¸€ä¸ªèŠ‚ç‚¹,è¯´æ˜å°¾èŠ‚ç‚¹æ˜¯å”¯ä¸€ä¸€ä¸ªèŠ‚ç‚¹
 			tail=null;
 			head=null;
 			return item;
@@ -68,7 +68,7 @@ public class DoubleNode {
 		
 		nodeAfter.previous=node;
 		node.next=nodeAfter;
-		if(nodeBefore==null) {//ËµÃ÷nodeAfterÊÇÍ·½Úµã
+		if(nodeBefore==null) {//è¯´æ˜nodeAfteræ˜¯å¤´èŠ‚ç‚¹
 			head=node;
 			return;
 		}
@@ -81,33 +81,33 @@ public class DoubleNode {
 		Node node=new Node(item);
 		nodeBefore.next=node;
 		node.previous=nodeBefore;
-		if(nodeAfter==null) {//ËµÃ÷nodeBeforeÊÇÎ²½Úµã
+		if(nodeAfter==null) {//è¯´æ˜nodeBeforeæ˜¯å°¾èŠ‚ç‚¹
 			tail=node;
 			return;
 		}
 		nodeAfter.previous=node;
 		node.next=nodeAfter;
 	}
-	//É¾³ıÖ¸¶¨Ë÷Òı³öµÄ½Úµã
+	//åˆ é™¤æŒ‡å®šç´¢å¼•å‡ºçš„èŠ‚ç‚¹
 	public Object deleteAt(int index) {
 		Node node=indexOf(index);
 		Object item=node.item;
 		Node nodeBefore=node.previous;
 		Node nodeAfter=node.next;
-		if(nodeBefore==null) //node½ÚµãÊÇÍ·½Úµã
+		if(nodeBefore==null) //nodeèŠ‚ç‚¹æ˜¯å¤´èŠ‚ç‚¹
 			head=node.next;
 		else
 			nodeBefore.next=nodeAfter;
 		//1  2
-		if(nodeAfter==null)//node½ÚµãÊÇÎ²½Úµã
+		if(nodeAfter==null)//nodeèŠ‚ç‚¹æ˜¯å°¾èŠ‚ç‚¹
 			tail=node.previous;
 		else
 			nodeAfter.previous=nodeBefore;
 		return item;
 	}
 	/**
-	 * ²éÕÒÖ¸¶¨Ë÷Òı´¦µÄ½Úµã
-	 * @param index Ë÷Òı,´Ó0¿ªÊ¼
+	 * æŸ¥æ‰¾æŒ‡å®šç´¢å¼•å¤„çš„èŠ‚ç‚¹
+	 * @param index ç´¢å¼•,ä»0å¼€å§‹
 	 */
 	private Node indexOf(int index) {
 		int indexAt=-1;
